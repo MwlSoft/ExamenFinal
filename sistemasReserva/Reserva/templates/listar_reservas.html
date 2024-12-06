@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Reservas</title>
+</head>
+<body>
+    <h1>Lista de Reservas</h1>
+    <table>
+        <tr>
+            <th>Cliente</th>
+            <th>Mesa</th>
+            <th>Fecha y Hora</th>
+            <th>Acciones</th>
+        </tr>
+        {% for reserva in reservas %}
+        <tr>
+            <td>{{ reserva.nombre_cliente }}</td>
+            <td>{{ reserva.mesa }}</td>
+            <td>{{ reserva.fecha_hora }}</td>
+            <td>
+                <a href="{% url 'cancelar_reserva' reserva.pk %}">Cancelar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'crear_reserva' %}">Crear Nueva Reserva</a>
+    <a href="{% url 'calendario_reservas' %}">Ver Calendario</a>
+</body>
+</html>
