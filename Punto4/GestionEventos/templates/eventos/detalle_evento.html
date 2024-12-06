@@ -1,0 +1,18 @@
+<h1>{{ evento.titulo }}</h1>
+<p>{{ evento.descripcion }}</p>
+<p>Fecha: {{ evento.fecha }}</p>
+<p>Ubicación: {{ evento.ubicacion }}</p>
+
+<h2>Registrarse como Participante</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Registrarse</button>
+</form>
+
+<h2>Participantes Registrados</h2>
+<ul>
+    {% for participante in participantes %}
+        <li>{{ participante.nombre }} ({{ participante.email }})</li>
+    {% endfor %}
+</ul>
