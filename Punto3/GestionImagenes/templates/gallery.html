@@ -1,0 +1,16 @@
+<ul>
+    {% if imagenes %}
+        {% for imagen in imagenes %}
+            <li>
+                <h2>{{ imagen.titulo }}</h2>
+                <img src="{{ imagen.archivo.url }}" alt="{{ imagen.titulo }}">
+                <p>{{ imagen.descripcion }}</p>
+                <a href="{% url 'delete_image' imagen.id %}">Eliminar</a>
+            </li>
+        {% endfor %}
+    {% else %}
+        <li>
+            <h2>No hay imágenes disponibles</h2>
+        </li>
+    {% endif %}
+</ul>

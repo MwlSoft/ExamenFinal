@@ -1,0 +1,29 @@
+<!-- detalle_curso.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Curso</title>
+</head>
+<body>
+    <h1>{{ curso.nombre }}</h1>
+    <p>{{ curso.descripcion }}</p>
+    <p>Fecha de inicio: {{ curso.fecha_inicio }}</p>
+
+    <h2>Estudiantes Inscritos</h2>
+    <ul>
+        {% for estudiante in estudiantes %}
+            <li>{{ estudiante.nombre }} ({{ estudiante.email }})</li>
+        {% empty %}
+            <li>No hay estudiantes inscritos.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Matricular Estudiante</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Matricular</button>
+    </form>
+</body>
+</html>
