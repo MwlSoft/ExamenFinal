@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ encuesta.pregunta }}</title>
+</head>
+<body>
+    <h1>{{ encuesta.preg unta }}</h1>
+    <form method="post" action="{% url 'votar_encuesta' encuesta.id %}">
+        {% csrf_token %}
+        {% for opcion in encuesta.opciones.all %}
+            <div>
+                <input type="radio" id="opcion{{ opcion.id }}" name="opcion_id" value="{{ opcion.id }}">
+                <label for="opcion{{ opcion.id }}">{{ opcion.texto }}</label>
+            </div>
+        {% endfor %}
+        <button type="submit">Votar</button>
+    </form>
+    <div id="resultados">
+        <!-- Aquí se mostrarán los resultados en un gráfico dinámico -->
+    </div>
+</body>
+</html>
